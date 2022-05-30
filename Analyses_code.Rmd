@@ -87,6 +87,8 @@ saveRDS(se_f5 , "./pre_process/data_se_reads5.rds")
 
 
 ```{r}
+se <- readRDS("./pre_process/data_se.rds")
+se_f5 <- readRDS("./pre_process/data_se_reads5.rds")
 long_data <- melt((assays(se)$counts))
 long_data2 <- inner_join(long_data, phenotypes, by = c("Var2" = "samples"))
 long_data2$exp_5 <- as.numeric(long_data2$value > 5)
@@ -116,22 +118,6 @@ ggsave(p, filename = "./results/expressed_genes.png", width = 10, height = 8, dp
 ```
 
 
-```{r , eval = FALSE, echo = FALSE, fig.width=12, fig.height=15, warning = FALSE, message= FALSE}
-p2 <- ggplot(long_data2_f5, aes(x = variable, y = log2(value))) +
-  geom_violin() +
-  stat_summary(geom = "point", fun = median) +
-  geom_jitter(alpha = 0.01) +
-  labs(title = "A) Sample wise Read counts", x = "Sample", y = expression("Log"[2] ~ "read counts")) +
-  # p + labs(title = "New plot title", subtitle = "A subtitle", tag = "A") + labs(title = NULL)
-  labs(caption = "(based on count data without filtering transcripts or samples)") +
-  theme(axis.line = element_line(colour = "darkblue", size = 1, linetype = 1), axis.text.x = element_text(angle = 90)) +
-  # scale_x_discrete(labels=se$sample_id) +
-  theme(axis.text.x = element_text(angle = 90))
-p2
-#ggsave(p, filename = "Results/genes_exrssd_5reads.png", width = 10, height = 8, dpi = 300)
-#+ geom_jitter(shape=16, position=position_jitter(0.2))
-#png("/Users/cob-aaf/Documents/Projects/PP_4730/NPD_updated/reports/Figures/violin_rawcounts.png", width = 3024, height = 2000, res = 300)
-```
 There seem to be bi-modal distribution of expressed genes possibly due to different cell types present in the samples.
 
 ## "FOXP3"  Expression "ENSG00000049768" is "FOXP3"
@@ -144,11 +130,12 @@ p2 <- ggplot(long_data2_f5, aes(x = Var2, y = log2(value))) +
   geom_jitter(alpha = 0.01) +
   labs(title = "A) Sample wise Read counts", x = "Sample", y = expression("Log"[2] ~ "read counts")) +
   # p + labs(title = "New plot title", subtitle = "A subtitle", tag = "A") + labs(title = NULL)
-  labs(caption = "(based on count data without filtering transcripts or samples)") +
+  labs(caption = "(based on count data after filtering)") +
   theme(axis.line = element_line(colour = "darkblue", size = 1, linetype = 1), axis.text.x = element_text(angle = 90)) +
   # scale_x_discrete(labels=se$sample_id) +
   theme(axis.text.x = element_text(angle = 90))
 p2
+ggsave(p2, filename = "./results/expressed_genes_f5.png", width = 10, height = 8, dpi = 300)
 # ggsave(p, filename = "Results/genes_exrssd_5reads.png", width = 10, height = 8, dpi = 300)
 #+ geom_jitter(shape=16, position=position_jitter(0.2))
 # png("/Users/cob-aaf/Documents/Projects/PP_4730/NPD_updated/reports/Figures/violin_rawcounts.png", width = 3024, height = 2000, res = 300)
@@ -164,21 +151,33 @@ p2
 dds <- DESeqDataSet(se_f5, design = ~group)
 
 
-dds$group <- relevel(dds$Group, ref = "low")
+dds$group <- relevel(dds$group, ref = "untreated")
 dds <- estimateSizeFactors(dds)
-
+dds <- rlog(dds)
 dds <- DESeq(dds, parallel = TRUE) # Run DESeq
 
 ```
 
-
 ```{r}
+normalized_counts <- counts(dds, normalized=TRUE)
+normalized_counts_long <- melt(normalized_counts)
+```
 
-col.group <- Sum_Expe_filtered$group_name
-levels(col.group) <-  brewer.pal(nlevels(col.group), "Set1")
-col.group <- as.character(col.group)
-#col.group <- as.character(Sum_Expe_filtered$group)
-plotMDS(assays(Sum_Expe_filtered)$counts, labels = Sum_Expe_filtered$Sample_ID, col=col.group, top = 500, dim.plot = c(2,1))
+
+```{r , eval = FALSE, echo = FALSE, fig.width=12, fig.height=15, warning = FALSE, message= FALSE}
+p3 <- ggplot(normalized_counts_long, aes(x = Var2, y = log2(value))) +
+  geom_violin() +
+  stat_summary(geom = "point", fun = median) +
+  geom_jitter(alpha = 0.01) +
+  labs(title = "A) Sample wise Normalised Read counts", x = "Sample", y = expression("Log"[2] ~ "read counts")) +
+  # p + labs(title = "New plot title", subtitle = "A subtitle", tag = "A") + labs(title = NULL)
+  labs(caption = "(based on count data after sizeFactor normalization)") +
+  theme(axis.line = element_line(colour = "darkblue", size = 1, linetype = 1), axis.text.x = element_text(angle = 90)) +
+  # scale_x_discrete(labels=se$sample_id) +
+  theme(axis.text.x = element_text(angle = 90))
+p3
+ggsave(p2, filename = "./results/expressed_genes_f5_normalized.png", width = 10, height = 8, dpi = 300)
+
 ```
 
 

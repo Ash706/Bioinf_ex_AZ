@@ -81,7 +81,6 @@ feature counts in the [directory](./pre_process/results/).
 
 ![Expressed genes count distribution](results/expressed_genes.png)
 
-
 ## 3. Expression of FOXP3
 
 A higher expression of **FOXP3** was observed in the treated samples vs.
