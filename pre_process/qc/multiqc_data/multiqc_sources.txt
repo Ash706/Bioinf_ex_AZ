@@ -1,0 +1,12 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	SRR5223500_1	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223500_1_fastqc.zip
+FastQC	all_sections	SRR5223547_1	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223547_1_fastqc.zip
+FastQC	all_sections	SRR5223500_2	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223500_2_fastqc.zip
+FastQC	all_sections	SRR5223547_2	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223547_2_fastqc.zip
+FastQC	all_sections	SRR5223570_2	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223570_2_fastqc.zip
+FastQC	all_sections	SRR5223505_1	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223505_1_fastqc.zip
+FastQC	all_sections	SRR5223505_2	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223505_2_fastqc.zip
+FastQC	all_sections	SRR5223522_1	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223522_1_fastqc.zip
+FastQC	all_sections	SRR5223543_1	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223543_1_fastqc.zip
+FastQC	all_sections	SRR5223570_1	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223570_1_fastqc.zip
+FastQC	all_sections	SRR5223522_2	/crex/proj/snic2021-23-431/private/data/raw_Data2/fastq/SRR5223522_2_fastqc.zip

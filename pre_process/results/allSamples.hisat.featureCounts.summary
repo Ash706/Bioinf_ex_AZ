@@ -1,0 +1,15 @@
+Status	/proj/snic2021-23-431/nobackup/hisat_results/SRR5223500_grch38.v37.sorted.bam	/proj/snic2021-23-431/nobackup/hisat_results/SRR5223505_grch38.v37.sorted.bam	/proj/snic2021-23-431/nobackup/hisat_results/SRR5223522_grch38.v37.sorted.bam	/proj/snic2021-23-431/nobackup/hisat_results/SRR5223543_grch38.v37.sorted.bam	/proj/snic2021-23-431/nobackup/hisat_results/SRR5223547_grch38.v37.sorted.bam	/proj/snic2021-23-431/nobackup/hisat_results/SRR5223570_grch38.v37.sorted.bam
+Assigned	36454874	32108748	25063721	27988926	28638587	6704625
+Unassigned_Unmapped	138012	169648	238156	138792	101988	47438
+Unassigned_Read_Type	0	0	0	0	0	0
+Unassigned_Singleton	0	0	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0
+Unassigned_MultiMapping	11001431	9728802	7018828	9625354	7115637	1519413
+Unassigned_Secondary	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0
+Unassigned_NoFeatures	6946075	3892851	4918538	4685313	3533970	1029928
+Unassigned_Overlapping_Length	0	0	0	0	0	0
+Unassigned_Ambiguity	3158294	2908633	2102102	2456836	2505872	592009

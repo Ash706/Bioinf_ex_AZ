@@ -1,0 +1,7 @@
+Module	Section	Sample Name	Source
+featureCounts	all_sections	SRR5223500_grch38.v37	/crex/proj/snic2021-23-431/private/results/allSamples.hisat.featureCounts.summary
+featureCounts	all_sections	SRR5223505_grch38.v37	/crex/proj/snic2021-23-431/private/results/allSamples.hisat.featureCounts.summary
+featureCounts	all_sections	SRR5223522_grch38.v37	/crex/proj/snic2021-23-431/private/results/allSamples.hisat.featureCounts.summary
+featureCounts	all_sections	SRR5223543_grch38.v37	/crex/proj/snic2021-23-431/private/results/allSamples.hisat.featureCounts.summary
+featureCounts	all_sections	SRR5223547_grch38.v37	/crex/proj/snic2021-23-431/private/results/allSamples.hisat.featureCounts.summary
+featureCounts	all_sections	SRR5223570_grch38.v37	/crex/proj/snic2021-23-431/private/results/allSamples.hisat.featureCounts.summary

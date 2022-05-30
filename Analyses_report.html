@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.284">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ashfaq Ali">
+
+<title>Analyses report</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="Analyses_report_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Analyses_report_files/libs/quarto-html/quarto.js"></script>
+<script src="Analyses_report_files/libs/quarto-html/popper.min.js"></script>
+<script src="Analyses_report_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Analyses_report_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Analyses_report_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="Analyses_report_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="Analyses_report_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Analyses_report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Analyses_report_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<style>
+.quarto-title-banner {
+  
+}
+</style>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Analyses report</h1>
+</div>
+
+
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ashfaq Ali </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="bioinformatic-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="bioinformatic-exercise">Bioinformatic exercise</h2>
+<p>The present exercise aims to give you the opportunity to demonstrate your capabilities in analysis of RNASeq data. If you do not have computational resources to perform the full analysis, you can scale down the data sets as you see appropriate. You can use any tools/programming languages you desire, but please provide us with the code you used. Accessions SRR5223500, SRR5223522, SRR5223543 contain RNASeq data of non-treated cells while SRR5223505, SRR5223547 and SRR5223570 have been treated with a stimulatory agent. We wish to determine the effect of the stimulatory agent on the transcriptome of these cells in order to understand its effects on cell differentiation.</p>
+<p>Questions:</p>
+<ol type="1">
+<li>Perform quality control of the sequence data. Are all samples appropriate to use?</li>
+<li>Map the reads to a reference, perform QC and calculate gene counts. Are all samples appropriate to use? -</li>
+<li>What is the expression of gene FOXP3 in stimulated vs non-treated cells?</li>
+<li>What genes are most differentially expressed between treated and non-treated cells? -</li>
+<li>What is translatability and how would you assess that in the context of RNAseq data? Prepare a presentation of your analysis methods and answers to the questions above to be presented at the day of interview.</li>
+</ol>
+<blockquote class="blockquote">
+<p>The analyses of the data and brief results are desibed in this file which will be further elaborated in the presentation.</p>
+</blockquote>
+</section>
+<section id="data-download-processing-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="data-download-processing-analyses">0. Data download processing analyses</h2>
+<ul>
+<li>Data was downloaded as described in the <a href="Analyses_steps.rmd">Analyses_steps.rmd</a>.</li>
+<li>Data was processed using <a href="pre_process/hisat.sh">bash script</a>.</li>
+<li>Further QC, statistical analyses, visualizations and functional assessment was carried out using the code described in the <a href="Analyses_code.Rmd">Analyses_code.rmd</a> file.</li>
+</ul>
+</section>
+<section id="perform-quality-control-of-the-sequence-data." class="level2">
+<h2 class="anchored" data-anchor-id="perform-quality-control-of-the-sequence-data.">1. Perform quality control of the sequence data.</h2>
+<section id="qc-on-sequencing-data-and-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="qc-on-sequencing-data-and-alignment">QC on sequencing data and alignment</h3>
+<p>To asses the quality of the read data, FASTQC followed by MultiQC was used. Overall, the data has been sequenced at high depth where most of the samples have between 34-50 million reads as indicated in the <a href="./pre_process/qc/multiqc_report.html">QC on reads report</a>. Even though one sample <strong>SRR5223570</strong> has lower sequencing depth of 8.8 million reads, the depth is sufficient to reliably quantity expression of most of the expressed genes.</p>
+</section>
+<section id="alignment-and-qc-of-the-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="alignment-and-qc-of-the-alignment">Alignment and QC of the alignment</h3>
+<p>The reads were aligned to human references genome using <a href="http://daehwankimlab.github.io/hisat2/manual/">Hisat2</a> and read counts was performed using <a href="https://academic.oup.com/bioinformatics/article/30/7/923/232889">featureCounts</a> algorithms.</p>
+<p>The summary of read alignment and QC is reported in <a href="./pre_process/mapping_qc/multiqc_report.html">mapping qc</a> where approximately <strong>93%</strong> or better alignment rate was observed. The read count statistics indicated <strong>62%</strong> or better assignment of reads to genes wihich is reported in the <a href="./pre_process/counts_qc/multiqc_report.html">counts qc file</a>.</p>
+</section>
+</section>
+<section id="qc-on-count-data" class="level2">
+<h2 class="anchored" data-anchor-id="qc-on-count-data">2. QC on count data</h2>
+<p>Feature level QC was performed on the resulting data from alignment and feature counts in the <a href="./pre_process/results/">directory</a>.</p>
+<section id="violin-plots-to-assess-data" class="level3">
+<h3 class="anchored" data-anchor-id="violin-plots-to-assess-data">Violin plots to assess data</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="results/expressed_genes.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Expressed genes count distribution</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="expression-of-foxp3" class="level2">
+<h2 class="anchored" data-anchor-id="expression-of-foxp3">3. Expression of FOXP3</h2>
+<p>A higher expression of <strong>FOXP3</strong> was observed in the treated samples vs. untreated samples.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="results/FOXP3_exp.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">FOXP3</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="statistical-analyses-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-analyses-visualization">4. Statistical analyses Visualization</h2>
+<p>The results of differential gene expression analyses using DESeq2 are reported <a href="./results/DE_Results_data.xlsx">here</a>.</p>
+<section id="volcano-plot" class="level3">
+<h3 class="anchored" data-anchor-id="volcano-plot">Volcano plot</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./results/VolcanoPlot_treated_vs_nontreated.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Volcano plot showing differentially expressed genes</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="ma-plot" class="level3">
+<h3 class="anchored" data-anchor-id="ma-plot">MA plot</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./results/MA_treated_vs_untreated.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">MA plot</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="heatmap" class="level3">
+<h3 class="anchored" data-anchor-id="heatmap">Heatmap</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./results/HeatMap_treated_vs_Untreated_p_01_lfc_2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Heatmap</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="functional-assessment" class="level2 tabset">
+<h2 class="tabset anchored" data-anchor-id="functional-assessment">5. Functional assessment</h2>
+<p>The results of Gene Set Enrichment analyses bases on various gene sets available through <a href="https://www.gsea-msigdb.org/gsea/index.jsp">msigdb</a> are reported in <a href="./results/treated_vs_untreated_genesets.xlsx">this file</a></p>
+<section id="hallmark" class="level3">
+<h3 class="anchored" data-anchor-id="hallmark">Hallmark</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="results/GSEA_Hallmark.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">top 10 hallmark</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="curated_geneset" class="level3">
+<h3 class="anchored" data-anchor-id="curated_geneset">curated_geneset</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="results/GSEA_curated_genesets.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">curated</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="computational" class="level3">
+<h3 class="anchored" data-anchor-id="computational">computational</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="results/GSEA_computational.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">computational</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="go" class="level3">
+<h3 class="anchored" data-anchor-id="go">GO</h3>
+<p><img src="results/GSEA_GO.png" class="img-fluid" alt="GO"> ###Immunological</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="results/GSEA_Immunological.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Immunological</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="regulation" class="level3">
+<h3 class="anchored" data-anchor-id="regulation">Regulation</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="results/GSEA_Regulation.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Regulation</figcaption><p></p>
+</figure>
+</div>
+<p>End</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,32 @@
+
+## Load Required modules on UPPMAX
+
+module load bioinfo-tools
+ml sratools/2.10.9 # ml is alias for 'module load'
+
+
+
+
+## Download that SRA files from NCBI
+
+prefetch SRR5223500 SRR5223522 SRR5223543 SRR5223505 SRR5223547 SRR5223570
+
+## Extract rawdata in fastq format
+
+fastq-dump -I --split-files *
+
+
+## QC of the raw reads
+module load FastQC/0.11.9
+ml MultiQC/1.12
+
+
+fastqc *fastq ../qc/
+
+data_dir = /proj/snic2021-23-431/private/data/raw_Data2/fastq
+
+bam_files = /proj/snic2021-23-431/nobackup/aligned
+
+results = /proj/snic2021-23-431/private/data/results/
+
+Genom_dir = /proj/snic2021-23-431/private/Human

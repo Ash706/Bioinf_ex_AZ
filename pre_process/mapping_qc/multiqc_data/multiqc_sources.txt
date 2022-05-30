@@ -1,0 +1,13 @@
+Module	Section	Sample Name	Source
+Samtools	flagstat	SRR5223547_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223547_grch38.v37.sorted.flagstat
+Samtools	flagstat	SRR5223543_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223543_grch38.v37.sorted.flagstat
+Samtools	flagstat	SRR5223500_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223500_grch38.v37.sorted.flagstat
+Samtools	flagstat	SRR5223505_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223505_grch38.v37.sorted.flagstat
+Samtools	flagstat	SRR5223522_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223522_grch38.v37.sorted.flagstat
+Samtools	flagstat	SRR5223570_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223570_grch38.v37.sorted.flagstat
+Bowtie 2 / HiSAT2	all_sections	SRR5223570_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223570_grch38.v37.summary
+Bowtie 2 / HiSAT2	all_sections	SRR5223543_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223543_grch38.v37.summary
+Bowtie 2 / HiSAT2	all_sections	SRR5223505_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223505_grch38.v37.summary
+Bowtie 2 / HiSAT2	all_sections	SRR5223500_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223500_grch38.v37.summary
+Bowtie 2 / HiSAT2	all_sections	SRR5223547_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223547_grch38.v37.summary
+Bowtie 2 / HiSAT2	all_sections	SRR5223522_grch38.v37	/crex/proj/snic2021-23-431/nobackup/hisat_results/SRR5223522_grch38.v37.summary
